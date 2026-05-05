@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>নূরুল ইসলাম — আলোর পথে</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --emerald: #10b981;
+  --emerald-light: #34d399;
+  --emerald-dark: #059669;
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
+  --gold-pale: rgba(245,158,11,0.08);
+  --cream: #0f172a;
+  --ink: #e2e8f0;
+  --ink-soft: #cbd5e1;
+  --ink-muted: #64748b;
+  --white: #1e293b;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: #0f172a;
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ORNAMENTAL BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 10%, rgba(16,185,129,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(245,158,11,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER ── */
+header {
+  background: linear-gradient(135deg, #0a1f14 0%, #0d2b1c 50%, #0a1f14 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 31px),
+    repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 31px);
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-emblem {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 20px rgba(201,147,58,0.4);
+  flex-shrink: 0;
+}
+
+.logo-text h1 {
+  font-family: 'Amiri', serif;
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.logo-text span {
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+nav a:hover, nav a.active {
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ── SEARCH BAR ── */
+.search-section {
+  background: #0a1a10;
+  padding: 18px 24px 22px;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(16,185,129,0.1);
+}
+
+.search-container {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-type-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.search-tab {
+  padding: 6px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(201,147,58,0.4);
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+
+.search-tab.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.search-input-wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 2px solid rgba(16,185,129,0.2);
+  background: rgba(16,185,129,0.05);
+  color: var(--ink);
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.search-input::placeholder { color: rgba(255,255,255,0.4); }
+.search-input:focus {
+  border-color: var(--emerald);
+  background: rgba(16,185,129,0.08);
+}
+
+.search-btn {
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0f172a;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.search-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.3); }
+
+/* ── SEARCH RESULTS ── */
+.search-results {
+  max-width: 700px;
+  margin: 12px auto 0;
+  display: none;
+}
+
+.search-result-item {
+  background: #1e293b;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-left: 4px solid var(--gold);
+  border: 1px solid rgba(16,185,129,0.15);
+  border-left: 4px solid var(--gold);
+}
+
+.search-result-item:hover { transform: translateX(4px); }
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.result-title {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+
+.result-ref {
+  font-size: 0.75rem;
+  color: var(--emerald-light);
+  background: rgba(16,185,129,0.1);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.result-expand {
+  transition: all 0.3s;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.result-expand.open {
+  max-height: 400px;
+}
+
+.result-expand-inner {
+  padding: 12px 16px 14px;
+  border-top: 1px solid rgba(16,185,129,0.1);
+}
+
+/* ── MAIN LAYOUT ── */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+}
+
+/* ── DAILY SECTION (Hadith + Ayat) ── */
+.daily-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 700px) { .daily-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: #1e293b;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  padding: 18px 22px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(16,185,129,0.1);
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.card-icon.quran { background: rgba(16,185,129,0.12); }
+.card-icon.hadith { background: rgba(245,158,11,0.12); }
+
+.card-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--emerald-light);
+}
+
+.card-header .badge {
+  margin-left: auto;
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--emerald);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.hadith .card-header .badge { background: var(--gold); color: var(--ink); }
+
+.card-body { padding: 20px 22px; }
+
+.arabic-text {
+  font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+  font-size: 1.6rem;
+  line-height: 2;
+  text-align: right;
+  direction: rtl;
+  color: var(--emerald-light);
+  margin-bottom: 8px;
+  background: rgba(16,185,129,0.07);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border-right: 4px solid var(--emerald);
+}
+
+.translation {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  padding: 12px 16px;
+  background: rgba(245,158,11,0.07);
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  margin-bottom: 12px;
+}
+
+.transliteration-line {
+  font-size: 0.83rem;
+  font-style: italic;
+  color: var(--gold-light);
+  padding: 4px 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+.narrator-text {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.reference {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.reference strong {
+  color: var(--emerald-light);
+  background: rgba(16,185,129,0.1);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+/* ── SURAH LEARNING ── */
+.surah-section {
+  background: #1e293b;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.section-header {
+  background: linear-gradient(135deg, #0a2a1a, #0d3521);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16,185,129,0.15);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+}
+
+.section-title h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--emerald-light);
+}
+
+.section-title p {
+  font-size: 0.78rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.surah-nav-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.surah-nav-btns button {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(16,185,129,0.3);
+  background: rgba(16,185,129,0.08);
+  color: var(--emerald-light);
+  cursor: pointer;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.surah-nav-btns button:hover {
+  background: rgba(16,185,129,0.18);
+}
+
+.surah-body { padding: 24px; }
+
+.surah-info-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.surah-name-ar {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 2.2rem;
+  color: var(--emerald-light);
+  font-weight: 700;
+}
+
+.surah-name-bn {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.surah-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meta-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.meta-chip.green { background: rgba(16,185,129,0.12); color: var(--emerald-light); }
+.meta-chip.gold { background: rgba(245,158,11,0.12); color: var(--gold-light); }
+
+.bismillah {
+  font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+  font-size: 2rem;
+  text-align: center;
+  direction: rtl;
+  color: var(--emerald-light);
+  padding: 16px;
+  margin-bottom: 20px;
+  background: rgba(16,185,129,0.07);
+  border-radius: 14px;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+/* ── WORD BY WORD ── */
+.verse-block {
+  margin-bottom: 24px;
+  border: 1px solid rgba(16,185,129,0.12);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.verse-number-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(16,185,129,0.05);
+  border-bottom: 1px solid rgba(16,185,129,0.08);
+}
+
+.verse-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--emerald);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.verse-full-arabic {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1.7rem;
+  direction: rtl;
+  line-height: 2;
+  color: var(--emerald-light);
+  text-align: right;
+  padding: 14px 18px;
+  border-bottom: 1px dashed rgba(16,185,129,0.12);
+}
+
+.words-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.word-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(16,185,129,0.05);
+  border: 1.5px solid rgba(16,185,129,0.12);
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 70px;
+  direction: ltr;
+}
+
+.word-card:hover {
+  background: rgba(16,185,129,0.12);
+  border-color: var(--emerald);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(16,185,129,0.15);
+}
+
+.word-arabic {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1.5rem;
+  color: var(--emerald-light);
+  line-height: 1.6;
+}
+
+.word-transliteration {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.word-meaning {
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  text-align: center;
+}
+
+.verse-translation-full {
+  padding: 12px 18px;
+  background: rgba(245,158,11,0.06);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  border-top: 1px solid rgba(245,158,11,0.1);
+}
+
+/* ── INFOGRAPHICS BTN ── */
+.infographic-trigger {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: rgba(245,158,11,0.05);
+  border-top: 1px dashed rgba(245,158,11,0.2);
+  flex-wrap: wrap;
+}
+
+.infographic-trigger p {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  min-width: 180px;
+}
+
+.btn-infographic {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--ink);
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn-infographic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,147,58,0.35);
+}
+
+/* ── INFOGRAPHIC OUTPUT ── */
+.infographic-output {
+  padding: 20px 24px;
+  display: none;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.infographic-output.visible { display: block; }
+
+.infographic-output img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.infographic-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(16,185,129,0.15);
+  border-top-color: var(--emerald);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 30-DAY PLAN ── */
+.plan-section {
+  background: #1e293b;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.plan-header {
+  background: linear-gradient(135deg, #2d1a4a, #4a2d7a);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.plan-title {
+  color: var(--white);
+}
+
+.plan-title h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-info {
+  text-align: right;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+}
+
+.progress-info strong {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+}
+
+.progress-bar-wrap {
+  padding: 16px 24px 4px;
+  background: rgba(16,185,129,0.03);
+  border-bottom: 1px solid rgba(16,185,129,0.08);
+}
+
+.progress-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.progress-bar-track {
+  height: 10px;
+  background: rgba(13,110,78,0.1);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--emerald), var(--emerald-light));
+  border-radius: 50px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 16px 20px 24px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.plan-grid::-webkit-scrollbar { width: 5px; }
+.plan-grid::-webkit-scrollbar-track { background: var(--cream); }
+.plan-grid::-webkit-scrollbar-thumb { background: var(--emerald-light); border-radius: 50px; }
+
+.day-card {
+  border: 1px solid rgba(16,185,129,0.1);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: #162032;
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13,110,78,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.day-card:hover::before { opacity: 1; }
+.day-card:hover { border-color: var(--emerald-light); transform: translateX(3px); }
+
+.day-card.completed {
+  background: rgba(16,185,129,0.12);
+  border-color: var(--emerald);
+}
+
+.day-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.1);
+  color: var(--emerald-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.day-card.completed .day-num {
+  background: var(--emerald);
+  color: #0f172a;
+}
+
+.day-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.day-content h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.day-content p {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.day-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(13,110,78,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.day-card.completed .day-check {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: var(--white);
+}
+
+/* ── RESOURCES ── */
+.resources-section {
+  background: #1e293b;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.resources-header {
+  background: linear-gradient(135deg, #1a3a5c, #2a5fa0);
+  padding: 18px 24px;
+}
+
+.resources-header h2 {
+  color: var(--white);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(16,185,129,0.12);
+  transition: all 0.2s;
+  background: rgba(16,185,129,0.04);
+}
+
+.resource-link:hover {
+  border-color: var(--emerald);
+  background: rgba(16,185,129,0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.resource-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.resource-info h4 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.resource-info p {
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+}
+
+/* ── CUSTOM INFOGRAPHIC BTN ── */
+.custom-infographic-section {
+  background: #1e293b;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 24px;
+  border: 1px solid rgba(16,185,129,0.12);
+}
+
+.custom-infographic-section h2 {
+  font-size: 1.1rem;
+  color: var(--emerald-light);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-infographic-section p {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.custom-input-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.custom-text-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 2px solid rgba(16,185,129,0.2);
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: rgba(16,185,129,0.05);
+  color: var(--ink);
+}
+
+.custom-text-input:focus { border-color: var(--emerald-light); }
+
+.btn-custom-infographic {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  color: var(--white);
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-custom-infographic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,110,78,0.3);
+}
+
+.custom-infographic-output {
+  margin-top: 16px;
+  display: none;
+}
+
+.custom-infographic-output.visible { display: block; }
+
+.custom-infographic-output img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0a1a10;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 24px;
+  font-size: 0.8rem;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(16,185,129,0.1);
+}
+
+footer span { color: var(--gold-light); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 24px;
+  background: #1e293b;
+  color: var(--ink);
+  padding: 12px 22px;
+  border-radius: 50px;
+  border: 1px solid rgba(16,185,129,0.2);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  pointer-events: none;
+  max-width: 300px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── ANIMATE ON LOAD ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card, .surah-section, .plan-section, .resources-section, .custom-infographic-section {
+  animation: fadeUp 0.5s ease both;
+}
+
+.daily-grid .card:nth-child(1) { animation-delay: 0.1s; }
+.daily-grid .card:nth-child(2) { animation-delay: 0.2s; }
+.surah-section { animation-delay: 0.3s; }
+.plan-section { animation-delay: 0.35s; }
+.resources-section { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-emblem">☪️</div>
+      <div class="logo-text">
+        <h1>নূরুল ইসলাম</h1>
+        <span>আলোর পথে — প্রতিদিন একধাপ</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#daily" class="active">দৈনিক</a>
+      <a href="#surah">সূরা শিক্ষা</a>
+      <a href="#plan">৩০ দিন</a>
+      <a href="#resources">রিসোর্স</a>
+      <a href="#infographic">ইনফোগ্রাফিক</a>
+    </nav>
+  </div>
+
+  <!-- Search -->
+  <div class="search-section">
+    <div class="search-container">
+      <div class="search-type-tabs">
+        <button class="search-tab active" onclick="setSearchType('hadith', this)">হাদীস</button>
+        <button class="search-tab" onclick="setSearchType('quran', this)">কুরআন</button>
+      </div>
+      <div class="search-input-wrap">
+        <input class="search-input" id="searchInput" type="text" placeholder="বিষয় বা কীওয়ার্ড লিখুন... (যেমন: ধৈর্য, নামাজ, রহমত)" />
+        <button class="search-btn" onclick="doSearch()">🔍 খুঁজুন</button>
+      </div>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- ── Daily Section ── -->
+  <section id="daily">
+    <div class="daily-grid">
+
+      <!-- Ayat of the Day -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon quran">📖</div>
+          <div>
+            <h2>আজকের আয়াত</h2>
+            <div style="font-size:0.75rem;color:var(--ink-muted);">প্রতিদিন নতুন আয়াত</div>
+          </div>
+          <span class="badge">কুরআন</span>
+        </div>
+        <div class="card-body" id="ayatBody">
+          <div id="ayat-loading" class="loading-state">
+            <div class="spinner"></div>
+            <span>লোড হচ্ছে...</span>
+          </div>
+          <div id="ayat-content" style="display:none">
+            <div class="arabic-text" id="ayatArabic"></div>
+            <div class="transliteration-line" id="ayatTranslit"></div>
+            <div class="translation" id="ayatTranslation"></div>
+            <div class="reference">
+              <span>📍 রেফারেন্স:</span>
+              <strong id="ayatRef"></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hadith of the Day -->
+      <div class="card hadith">
+        <div class="card-header">
+          <div class="card-icon hadith">🕌</div>
+          <div>
+            <h2>আজকের হাদীস</h2>
+            <div style="font-size:0.75rem;color:var(--ink-muted);">সহীহ হাদীস থেকে</div>
+          </div>
+          <span class="badge">হাদীস</span>
+        </div>
+        <div class="card-body" id="hadithBody">
+          <div id="hadith-loading" class="loading-state">
+            <div class="spinner"></div>
+            <span>লোড হচ্ছে...</span>
+          </div>
+          <div id="hadith-content" style="display:none">
+            <div class="arabic-text" id="hadithArabic" style="font-size:1.4rem;"></div>
+            <div class="transliteration-line" id="hadithTranslit"></div>
+            <div class="translation" id="hadithTranslation"></div>
+            <div class="narrator-text" id="hadithNarrator"></div>
+            <div class="reference">
+              <span>📍 রেফারেন্স:</span>
+              <strong id="hadithRef"></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Surah Learning ── -->
+  <section id="surah" class="surah-section">
+    <div class="section-header">
+      <div class="section-title">
+        <div style="font-size:28px;">📚</div>
+        <div>
+          <h2>আজকের সূরা শিক্ষা</h2>
+          <p>Word by Word — প্রতিটি শব্দের অর্থ জানুন</p>
+        </div>
+      </div>
+      <div class="surah-nav-btns">
+        <select id="surahSelect" onchange="loadSurahFromSelect()">
+          <option value="">— সূরা বেছে নিন —</option>
+        </select>
+        <button onclick="changeSurah(-1)">← আগের</button>
+        <button onclick="changeSurah(1)">পরের →</button>
+      </div>
+    </div>
+
+    <div class="surah-body">
+      <div class="surah-info-bar">
+        <div class="surah-name-ar" id="surahNameAr">الفَاتِحَة</div>
+        <div>
+          <div class="surah-name-bn" id="surahNameBn">সূরা আল-ফাতিহা</div>
+          <div class="surah-meta" id="surahMeta">
+            <span class="meta-chip green">মক্কী</span>
+            <span class="meta-chip gold">৭ আয়াত</span>
+            <span class="meta-chip green">সূরা নং: ১</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+      <div id="versesContainer"></div>
+    </div>
+
+    <!-- Infographic Button -->
+    <div class="infographic-trigger">
+      <p>🎨 এই সূরার উপর Gemini AI দিয়ে সুন্দর ইনফোগ্রাফিক তৈরি করুন</p>
+      <button class="btn-infographic" onclick="generateSurahInfographic()">
+        ✨ ইনফোগ্রাফিক তৈরি করুন
+      </button>
+    </div>
+    <div id="surahInfographicOutput" style="display:none; padding:16px 24px;">
+      <div id="infographicLoading" class="infographic-loading" style="display:none">
+        <div class="spinner"></div>
+        <span>Gemini AI দিয়ে ইনফোগ্রাফিক তৈরি হচ্ছে...</span>
+      </div>
+      <div id="infographicSvgWrap"></div>
+      <button id="downloadInfographicBtn" onclick="downloadInfographic()" style="display:none;margin-top:12px;padding:10px 22px;background:var(--emerald);color:#0f172a;border:none;border-radius:50px;cursor:pointer;font-family:inherit;font-weight:700;font-size:0.85rem;">⬇ SVG ডাউনলোড করুন</button>
+    </div>
+  </section>
+
+  <!-- ── 30-Day Plan ── -->
+  <section id="plan" class="plan-section">
+    <div class="plan-header">
+      <div class="plan-title">
+        <h2>📅 ৩০ দিনের ইসলামিক পরিকল্পনা</h2>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.78rem;margin-top:4px;">প্রতিদিন একটি করে সম্পন্ন করুন</p>
+      </div>
+      <div class="progress-info">
+        <strong id="completedCount">০/৩০</strong>
+        <span>সম্পন্ন</span>
+      </div>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-label">
+        <span>অগ্রগতি</span>
+        <span id="progressPercent">০%</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- arabic_30day_plan.html এখানে inject হবে -->
+    <div id="arabicPlanWrapper" style="padding:16px 20px 24px;--color-text-primary:#e2e8f0;--color-text-secondary:#94a3b8;--color-background-primary:#162032;--color-background-secondary:#0f172a;--color-border-tertiary:rgba(16,185,129,0.12);--color-border-secondary:rgba(16,185,129,0.2);--border-radius-lg:12px;--font-sans:'Hind Siliguri',sans-serif;"></div>
+  </section>
+
+  <!-- ── Resources ── -->
+  <section id="resources" class="resources-section">
+    <div class="resources-header">
+      <h2>🔗 গুরুত্বপূর্ণ রিসোর্স</h2>
+    </div>
+    <div class="resources-grid">
+      <a class="resource-link" href="https://quran.com" target="_blank">
+        <div class="resource-icon" style="background:#e8f5f0;">📖</div>
+        <div class="resource-info">
+          <h4>Quran.com</h4>
+          <p>কুরআন পড়ুন ও শুনুন</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://quranwbw.com" target="_blank">
+        <div class="resource-icon" style="background:#fdf3e3;">📝</div>
+        <div class="resource-info">
+          <h4>QuranWBW</h4>
+          <p>Word by Word অনুবাদ</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://sunnah.com" target="_blank">
+        <div class="resource-icon" style="background:#f0f4ff;">🕌</div>
+        <div class="resource-info">
+          <h4>Sunnah.com</h4>
+          <p>হাদীস কালেকশন</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://islamicfinder.org" target="_blank">
+        <div class="resource-icon" style="background:#f5f0ff;">🧭</div>
+        <div class="resource-info">
+          <h4>IslamicFinder</h4>
+          <p>নামাজের সময়সূচি</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://al-quran.info" target="_blank">
+        <div class="resource-icon" style="background:#fff0f0;">🔊</div>
+        <div class="resource-info">
+          <h4>Al-Quran.info</h4>
+          <p>কুরআন তেলাওয়াত</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://islamhouse.com/bn" target="_blank">
+        <div class="resource-icon" style="background:#f0fff4;">🏡</div>
+        <div class="resource-info">
+          <h4>IslamHouse (বাংলা)</h4>
+          <p>ইসলামিক বই ও লেকচার</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://duas.org" target="_blank">
+        <div class="resource-icon" style="background:#fffaed;">🤲</div>
+        <div class="resource-info">
+          <h4>Duas.org</h4>
+          <p>দোয়া ও আযকার</p>
+        </div>
+      </a>
+      <a class="resource-link" href="https://productivemuslim.com" target="_blank">
+        <div class="resource-icon" style="background:#f0f8ff;">⭐</div>
+        <div class="resource-info">
+          <h4>Productive Muslim</h4>
+          <p>ইসলামিক জীবনধারা</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Custom Infographic ── -->
+  <section id="infographic" class="custom-infographic-section">
+    <h2>🎨 কাস্টম ইনফোগ্রাফিক তৈরি করুন</h2>
+    <p>যেকোনো ইসলামিক বিষয়ের উপর ইনফোগ্রাফিক বানান — সম্পূর্ণ বিনামূল্যে (NanoBanana + Gemini API)</p>
+    <div class="custom-input-row">
+      <input class="custom-text-input" id="customInfographicInput" type="text"
+        placeholder="যেমন: নামাজের ৫ ওয়াক্ত, রমজানের ফজিলত, ইসলামের ৫ স্তম্ভ..." />
+      <button class="btn-custom-infographic" onclick="generateCustomInfographic()">
+        🚀 তৈরি করুন
+      </button>
+    </div>
+    <div class="custom-infographic-output" id="customInfographicOutput"></div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>নূরুল ইসলাম — আলোর পথে 🌙 | সকল তথ্য <span>কুরআন ও সহীহ হাদীস</span> থেকে সংকলিত</p>
+  <p style="margin-top:6px;font-size:0.72rem;">Powered by OpenRouter (Claude + Free Models) • NanoBanana • Gemini API</p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let currentSurahIndex = 0;
+let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+let searchType = 'hadith';
+let lastInfographicSvg = '';
+
+const SURAH_LIST_SELECT = [
+  {n:1,name:'আল-ফাতিহা',ar:'الفاتحة'},{n:2,name:'আল-বাকারা',ar:'البقرة'},
+  {n:3,name:'আলে-ইমরান',ar:'آل عمران'},{n:4,name:'আন-নিসা',ar:'النساء'},
+  {n:36,name:'ইয়াসীন',ar:'يس'},{n:55,name:'আর-রাহমান',ar:'الرحمن'},
+  {n:67,name:'আল-মুলক',ar:'الملك'},{n:78,name:'আন-নাবা',ar:'النبأ'},
+  {n:112,name:'আল-ইখলাস',ar:'الإخلاص'},{n:113,name:'আল-ফালাক',ar:'الفلق'},
+  {n:114,name:'আন-নাস',ar:'الناس'},
+];
+
+// ══════════════════════════════════════════════
+// DATA
+
+const DAILY_AYAT = [
+  { arabic: "وَاصْبِرْ فَإِنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُحْسِنِينَ", translit: "Waṣbir fa-inna Allāha lā yuḍīʿu ajra l-muḥsinīn", translation: "এবং ধৈর্য ধারণ করো, কারণ নিশ্চয়ই আল্লাহ সৎকর্মশীলদের পুরস্কার নষ্ট করেন না।", ref: "সূরা হূদ, আয়াত ১১৫ (১১:১১৫)" },
+  { arabic: "إِنَّ مَعَ الْعُسْرِ يُسْرًا", translit: "Inna maʿa l-ʿusri yusrā", translation: "নিশ্চয়ই কষ্টের সাথে সাচ্ছন্দ্য রয়েছে।", ref: "সূরা আশ-শারহ, আয়াত ৬ (৯৪:৬)" },
+  { arabic: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا", translit: "Wa man yattaqi Allāha yajʿal lahu makhrajan", translation: "যে আল্লাহকে ভয় করে, আল্লাহ তার জন্য পথ বের করে দেন।", ref: "সূরা আত-তালাক, আয়াত ২ (৬৫:২)" },
+  { arabic: "وَتَوَكَّلْ عَلَى اللَّهِ ۚ وَكَفَىٰ بِاللَّهِ وَكِيلًا", translit: "Wa tawakkal ʿalā Allāhi wa kafā billāhi wakīlā", translation: "এবং আল্লাহর উপর ভরসা রাখো। কার্যনির্বাহক হিসেবে আল্লাহই যথেষ্ট।", ref: "সূরা আল-আহযাব, আয়াত ৩ (৩৩:৩)" },
+  { arabic: "فَاذْكُرُونِي أَذْكُرْكُمْ", translit: "Fadhkurūnī adhkurkum", translation: "সুতরাং তোমরা আমাকে স্মরণ করো, আমি তোমাদের স্মরণ করব।", ref: "সূরা আল-বাকারা, আয়াত ১৫২ (২:১৫২)" },
+  { arabic: "وَقُل رَّبِّ زِدْنِي عِلْمًا", translit: "Wa qul Rabbi zidnī ʿilmā", translation: "এবং বলো: হে আমার প্রভু, আমার জ্ঞান বৃদ্ধি করুন।", ref: "সূরা ত্বা-হা, আয়াত ১১৪ (২০:১১৪)" },
+  { arabic: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ", translit: "Inna Allāha maʿa ṣ-ṣābirīn", translation: "নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।", ref: "সূরা আল-বাকারা, আয়াত ১৫৩ (২:১৫৩)" }
+];
+
+const DAILY_HADITH = [
+  { arabic: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى", translit: "Innamā l-aʿmālu bin-niyyāt, wa innamā li-kulli mri'in mā nawā", translation: "নিশ্চয়ই সকল কাজ নিয়তের উপর নির্ভরশীল, এবং প্রত্যেক ব্যক্তি তাই পাবে যা সে নিয়ত করেছে।", ref: "সহীহ বুখারী — হাদীস নং ১", narrator: "উমর ইবনুল খাত্তাব (রা.) থেকে বর্ণিত" },
+  { arabic: "الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ", translit: "Al-Muslimu man salima l-Muslimūna min lisānihi wa yadihi", translation: "মুসলিম সে, যার জিহ্বা ও হাত থেকে অন্য মুসলিম নিরাপদ।", ref: "সহীহ বুখারী — হাদীস নং ১০", narrator: "আবদুল্লাহ ইবন আমর (রা.) থেকে বর্ণিত" },
+  { arabic: "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ", translit: "Khayrukum man taʿallama l-Qurʾāna wa ʿallamahu", translation: "তোমাদের মধ্যে সর্বোত্তম সে, যে কুরআন শেখে এবং শেখায়।", ref: "সহীহ বুখারী — হাদীস নং ৫০২৭", narrator: "উসমান (রা.) থেকে বর্ণিত" },
+  { arabic: "إِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ، وَإِنَّ الْبِرَّ يَهْدِي إِلَى الْجَنَّةِ", translit: "Inna ṣ-ṣidqa yahdī ilā l-birr, wa inna l-birra yahdī ilā l-jannah", translation: "নিশ্চয়ই সত্যবাদিতা সুকর্মের দিকে পথ দেখায়, এবং সুকর্ম জান্নাতের দিকে পথ দেখায়।", ref: "সহীহ বুখারী — হাদীস নং ৬০৯৪", narrator: "আবদুল্লাহ ইবনে মাসউদ (রা.) থেকে বর্ণিত" },
+  { arabic: "مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ", translit: "Man kāna yuʾminu billāhi wa l-yawmi l-ākhiri falyaqul khayran aw liyaṣmut", translation: "যে ব্যক্তি আল্লাহ ও পরকালে বিশ্বাস রাখে, সে যেন ভালো কথা বলে অথবা চুপ থাকে।", ref: "সহীহ বুখারী — হাদীস নং ৬০১৮", narrator: "আবু হুরায়রা (রা.) থেকে বর্ণিত" },
+  { arabic: "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ", translit: "Lā yuʾminu aḥadukum ḥattā yuḥibba li-akhīhi mā yuḥibbu li-nafsih", translation: "তোমাদের কেউ প্রকৃত মুমিন হতে পারবে না যতক্ষণ না সে তার ভাইয়ের জন্য তা পছন্দ করে যা সে নিজের জন্য পছন্দ করে।", ref: "সহীহ বুখারী — হাদীস নং ১৩", narrator: "আনাস (রা.) থেকে বর্ণিত" },
+  { arabic: "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ", translit: "Ṭalabu l-ʿilmi farīḍatun ʿalā kulli Muslim", translation: "জ্ঞান অর্জন করা প্রত্যেক মুসলিমের উপর ফরজ।", ref: "ইবনে মাজাহ — হাদীস নং ২২৪", narrator: "আনাস (রা.) থেকে বর্ণিত" }
+];
+
+const SURAH_DATA = [
+  {
+    nameAr: "الفَاتِحَة", nameBn: "সূরা আল-ফাতিহা", type: "মক্কী", ayatCount: "৭ আয়াত", number: "সূরা নং: ১",
+    verses: [
+      {
+        num: 1, arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        translation: "পরম করুণাময়, অতি দয়ালু আল্লাহর নামে।",
+        words: [
+          { ar: "بِسْمِ", tr: "Bismi", bn: "নামে" },
+          { ar: "اللَّهِ", tr: "Allāhi", bn: "আল্লাহর" },
+          { ar: "الرَّحْمَٰنِ", tr: "Ar-Raḥmāni", bn: "পরম করুণাময়" },
+          { ar: "الرَّحِيمِ", tr: "Ar-Raḥīmi", bn: "অতি দয়ালু" }
+        ]
+      },
+      {
+        num: 2, arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        translation: "সমস্ত প্রশংসা আল্লাহর জন্য, যিনি সকল সৃষ্টির প্রতিপালক।",
+        words: [
+          { ar: "الْحَمْدُ", tr: "Al-ḥamdu", bn: "সকল প্রশংসা" },
+          { ar: "لِلَّهِ", tr: "Lillāhi", bn: "আল্লাহর জন্য" },
+          { ar: "رَبِّ", tr: "Rabbi", bn: "প্রতিপালক" },
+          { ar: "الْعَالَمِينَ", tr: "Al-ʿālamīna", bn: "সকল সৃষ্টির" }
+        ]
+      },
+      {
+        num: 3, arabic: "الرَّحْمَٰنِ الرَّحِيمِ",
+        translation: "পরম করুণাময়, অতি দয়ালু।",
+        words: [
+          { ar: "الرَّحْمَٰنِ", tr: "Ar-Raḥmāni", bn: "পরম করুণাময়" },
+          { ar: "الرَّحِيمِ", tr: "Ar-Raḥīmi", bn: "অতি দয়ালু" }
+        ]
+      },
+      {
+        num: 4, arabic: "مَالِكِ يَوْمِ الدِّينِ",
+        translation: "বিচার দিনের মালিক।",
+        words: [
+          { ar: "مَالِكِ", tr: "Māliki", bn: "মালিক" },
+          { ar: "يَوْمِ", tr: "Yawmi", bn: "দিনের" },
+          { ar: "الدِّينِ", tr: "Ad-dīni", bn: "বিচারের" }
+        ]
+      },
+      {
+        num: 5, arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+        translation: "আমরা শুধু আপনারই ইবাদত করি এবং শুধু আপনার কাছেই সাহায্য চাই।",
+        words: [
+          { ar: "إِيَّاكَ", tr: "Iyyāka", bn: "শুধু আপনাকেই" },
+          { ar: "نَعْبُدُ", tr: "naʿbudu", bn: "আমরা ইবাদত করি" },
+          { ar: "وَإِيَّاكَ", tr: "wa-iyyāka", bn: "এবং শুধু আপনার" },
+          { ar: "نَسْتَعِينُ", tr: "nastaʿīnu", bn: "আমরা সাহায্য চাই" }
+        ]
+      }
+    ]
+  },
+  {
+    nameAr: "الإِخْلَاص", nameBn: "সূরা আল-ইখলাস", type: "মক্কী", ayatCount: "৪ আয়াত", number: "সূরা নং: ১১২",
+    verses: [
+      {
+        num: 1, arabic: "قُلْ هُوَ اللَّهُ أَحَدٌ",
+        translation: "বলো, তিনিই আল্লাহ, একক।",
+        words: [
+          { ar: "قُلْ", tr: "Qul", bn: "বলো" },
+          { ar: "هُوَ", tr: "Huwa", bn: "তিনি" },
+          { ar: "اللَّهُ", tr: "Allāhu", bn: "আল্লাহ" },
+          { ar: "أَحَدٌ", tr: "Aḥad", bn: "একক/অদ্বিতীয়" }
+        ]
+      },
+      {
+        num: 2, arabic: "اللَّهُ الصَّمَدُ",
+        translation: "আল্লাহ অমুখাপেক্ষী।",
+        words: [
+          { ar: "اللَّهُ", tr: "Allāhu", bn: "আল্লাহ" },
+          { ar: "الصَّمَدُ", tr: "Aṣ-Ṣamadu", bn: "অমুখাপেক্ষী" }
+        ]
+      },
+      {
+        num: 3, arabic: "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+        translation: "তিনি কাউকে জন্ম দেননি, এবং তাঁকেও জন্ম দেওয়া হয়নি।",
+        words: [
+          { ar: "لَمْ", tr: "Lam", bn: "না" },
+          { ar: "يَلِدْ", tr: "yalid", bn: "জন্ম দিয়েছেন" },
+          { ar: "وَلَمْ", tr: "wa-lam", bn: "এবং না" },
+          { ar: "يُولَدْ", tr: "yūlad", bn: "জন্ম নিয়েছেন" }
+        ]
+      },
+      {
+        num: 4, arabic: "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+        translation: "এবং কেউ তাঁর সমতুল্য নয়।",
+        words: [
+          { ar: "وَلَمْ", tr: "wa-lam", bn: "এবং না" },
+          { ar: "يَكُن", tr: "yakun", bn: "হয়েছে" },
+          { ar: "لَّهُ", tr: "lahu", bn: "তাঁর জন্য" },
+          { ar: "كُفُوًا", tr: "kufuwan", bn: "সমতুল্য" },
+          { ar: "أَحَدٌ", tr: "aḥad", bn: "কেউ" }
+        ]
+      }
+    ]
+  }
+];
+
+const PLAN_30 = [
+  { day: 1, title: "সূরা আল-ফাতিহা", desc: "মুখস্থ ও অর্থ শিক্ষা" },
+  { day: 2, title: "সূরা আল-ইখলাস", desc: "তাওহীদের মূল শিক্ষা" },
+  { day: 3, title: "সূরা আল-ফালাক", desc: "আশ্রয়ের দোয়া" },
+  { day: 4, title: "সূরা আন-নাস", desc: "শয়তান থেকে রক্ষা" },
+  { day: 5, title: "সূরা আল-কাফিরুন", desc: "বিশ্বাসের ঘোষণা" },
+  { day: 6, title: "সূরা আল-কাওসার", desc: "কল্যাণের প্রতিশ্রুতি" },
+  { day: 7, title: "সূরা আল-মাউন", desc: "সামাজিক দায়বদ্ধতা" },
+  { day: 8, title: "সূরা আল-কুরাইশ", desc: "কুরাইশের নিয়ামত" },
+  { day: 9, title: "সূরা আল-ফিল", desc: "হস্তী বাহিনীর ঘটনা" },
+  { day: 10, title: "সূরা আল-হুমাজাহ", desc: "পরচর্চার শাস্তি" },
+  { day: 11, title: "সূরা আল-আসর", desc: "সময়ের শপথ" },
+  { day: 12, title: "সূরা আত-তাকাসুর", desc: "সম্পদের মোহ" },
+  { day: 13, title: "সূরা আল-কারিআহ", desc: "মহাপ্রলয়ের দিন" },
+  { day: 14, title: "সূরা আল-আদিয়াত", desc: "যুদ্ধের ঘোড়া" },
+  { day: 15, title: "সূরা আয-যালযালাহ", desc: "ভূমিকম্পের আয়াত" },
+  { day: 16, title: "সূরা আল-বাইয়িনাহ", desc: "স্পষ্ট প্রমাণ" },
+  { day: 17, title: "সূরা আল-কদর", desc: "লাইলাতুল কদর" },
+  { day: 18, title: "সূরা আল-আলাক", desc: "প্রথম ওহী" },
+  { day: 19, title: "সূরা আত-তীন", desc: "ডুমুর ও জলপাই" },
+  { day: 20, title: "সূরা আশ-শারহ", desc: "বক্ষ প্রশস্ততা" },
+  { day: 21, title: "সূরা আদ-দুহা", desc: "পূর্বাহ্নের কসম" },
+  { day: 22, title: "সূরা আল-লাইল", desc: "রাতের শপথ" },
+  { day: 23, title: "সূরা আশ-শামস", desc: "সূর্যের শপথ" },
+  { day: 24, title: "সূরা আল-বালাদ", desc: "শহরের শপথ" },
+  { day: 25, title: "সূরা আল-ফজর", desc: "ভোরের শপথ" },
+  { day: 26, title: "আয়াতুল কুরসী", desc: "আল্লাহর মহত্ত্ব" },
+  { day: 27, title: "সূরা ইয়াসীন (১-২০)", desc: "কুরআনের হৃদয়" },
+  { day: 28, title: "সূরা আর-রহমান (১-৩০)", desc: "আল্লাহর নিয়ামত" },
+  { day: 29, title: "সূরা আল-মুলক (১-১৫)", desc: "রাজত্বের আয়াত" },
+  { day: 30, title: "পর্যালোচনা ও দোয়া", desc: "৩০ দিনের সমাপ্তি" }
+];
+
+const SEARCH_DATA = {
+  hadith: [
+    { title: "নিয়তের হাদীস", ref: "বুখারী: ১", arabic: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ", translation: "নিশ্চয়ই সকল কাজ নিয়তের উপর নির্ভরশীল।", tags: ["নিয়ত", "কাজ", "আমল"] },
+    { title: "ধৈর্যের হাদীস", ref: "মুসলিম: ২৯৯৯", arabic: "عَجَبًا لِأَمْرِ الْمُؤْمِنِ", translation: "মুমিনের বিষয়টা বড়ই আশ্চর্যের! তার সকল বিষয়ই কল্যাণকর।", tags: ["ধৈর্য", "মুমিন", "কল্যাণ"] },
+    { title: "সত্যবাদিতার হাদীস", ref: "বুখারী: ৬০৯৪", arabic: "إِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ", translation: "নিশ্চয়ই সত্যবাদিতা সুকর্মের দিকে পথ দেখায়।", tags: ["সততা", "সত্য", "জান্নাত"] },
+    { title: "ভালোবাসার হাদীস", ref: "বুখারী: ১৩", arabic: "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ", translation: "তোমাদের কেউ প্রকৃত মুমিন হতে পারবে না যতক্ষণ না সে তার ভাইয়ের জন্য তা পছন্দ করে।", tags: ["ভালোবাসা", "মুমিন", "ভ্রাতৃত্ব"] },
+    { title: "জ্ঞান অর্জনের হাদীস", ref: "ইবনে মাজাহ: ২২৪", arabic: "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ", translation: "জ্ঞান অর্জন করা প্রত্যেক মুসলিমের উপর ফরজ।", tags: ["জ্ঞান", "শিক্ষা", "ফরজ"] }
+  ],
+  quran: [
+    { title: "সূরা আল-ফাতিহা", ref: "সূরা: ১", arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", translation: "সমস্ত প্রশংসা আল্লাহর জন্য, যিনি সকল সৃষ্টির প্রতিপালক।", tags: ["প্রশংসা", "রব", "ফাতিহা"] },
+    { title: "আয়াতুল কুরসী", ref: "বাকারা: ২৫৫", arabic: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ", translation: "আল্লাহ — তিনি ছাড়া কোনো ইলাহ নেই। তিনি চিরঞ্জীব, সর্বসত্তার ধারক।", tags: ["আল্লাহ", "কুরসী", "তাওহীদ"] },
+    { title: "ধৈর্যের আয়াত", ref: "বাকারা: ১৫৩", arabic: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ", translation: "নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।", tags: ["ধৈর্য", "সবর", "আল্লাহ"] },
+    { title: "রহমতের আয়াত", ref: "যুমার: ৫৩", arabic: "إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا", translation: "নিশ্চয়ই আল্লাহ সকল গুনাহ মাফ করেন।", tags: ["রহমত", "মাফ", "ক্ষমা"] },
+    { title: "জ্ঞানের আয়াত", ref: "ত্বা-হা: ১১৪", arabic: "وَقُل رَّبِّ زِدْنِي عِلْمًا", translation: "এবং বলো: হে আমার প্রভু, আমার জ্ঞান বৃদ্ধি করুন।", tags: ["জ্ঞান", "ইলম", "দোয়া"] }
+  ]
+};
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let currentSurahIndex = 0;
+let completedDays = JSON.parse(localStorage.getItem('completedDays') || '[]');
+let searchType = 'hadith';
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+function buildSurahSelect() {
+  const sel = document.getElementById('surahSelect');
+  if (!sel) return;
+  SURAH_LIST_SELECT.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.n;
+    opt.textContent = s.n + '. ' + s.name + ' — ' + s.ar;
+    sel.appendChild(opt);
+  });
+}
+
+function loadSurahFromSelect() {
+  const num = parseInt(document.getElementById('surahSelect').value);
+  if (!num) return;
+  const idx = SURAH_DATA.findIndex(s => s.number === 'সূরা নং: ' + num);
+  if (idx >= 0) { currentSurahIndex = idx; renderSurah(); return; }
+  fetchSurahFromAPI(num);
+}
+
+async function fetchSurahFromAPI(num) {
+  const container = document.getElementById('versesContainer');
+  container.innerHTML = '<div class="loading-state"><div class="spinner"></div><p style="margin-top:10px">সূরা লোড হচ্ছে...</p></div>';
+  try {
+    const res = await fetch('/api/surah?surah=' + num);
+    const data = await res.json();
+    document.getElementById('surahNameAr').textContent = data.surah_name_arabic || '';
+    document.getElementById('surahNameBn').textContent = data.surah_name_english || '';
+    document.getElementById('surahMeta').innerHTML = '<span class="meta-chip green">সূরা নং ' + data.surah_number + '</span><span class="meta-chip gold">মোট আয়াত ' + data.total_ayahs + '</span>';
+    const byAyah = {};
+    (data.words || []).forEach(w => { if (!byAyah[w.ayah]) byAyah[w.ayah] = []; byAyah[w.ayah].push(w); });
+    container.innerHTML = Object.entries(byAyah).map(([n, words]) =>
+      '<div class="verse-block"><div class="verse-number-bar"><div class="verse-num">' + n + '</div><small style="color:var(--ink-muted);font-size:0.75rem">আয়াত ' + n + '</small></div>' +
+      '<div class="verse-full-arabic">' + words.map(w => w.arabic).join(' ') + '</div>' +
+      '<div class="words-grid">' + words.map(w => '<div class="word-card"><div class="word-arabic">' + w.arabic + '</div><div class="word-transliteration">' + (w.transliteration||'') + '</div><div class="word-meaning">' + (w.bangla||'') + '</div></div>').join('') + '</div>' +
+      (words[0].full_ayah_bangla ? '<div class="verse-translation-full">📝 <strong>অনুবাদ:</strong> ' + words[0].full_ayah_bangla + '</div>' : '') +
+      '</div>'
+    ).join('');
+  } catch(e) {
+    container.innerHTML = '<div style="padding:20px;color:#f87171;text-align:center">❌ লোড হয়নি: ' + e.message + '</div>';
+  }
+}
+
+function loadArabicPlan() {
+  fetch('arabic_30day_plan.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('arabicPlanWrapper').innerHTML = html;
+    })
+    .catch(() => {
+      document.getElementById('arabicPlanWrapper').innerHTML =
+        '<div style="padding:20px;color:var(--ink-muted);text-align:center">arabic_30day_plan.html লোড হয়নি। ফাইলটি public/ ফোল্ডারে রাখুন।</div>';
+    });
+}
+
+function showAyat(d) {
+  document.getElementById('ayatArabic').textContent = d.arabic;
+  document.getElementById('ayatTranslit').textContent = d.translit || '';
+  document.getElementById('ayatTranslation').textContent = d.translation;
+  document.getElementById('ayatRef').textContent = d.ref;
+  document.getElementById('ayat-loading').style.display = 'none';
+  document.getElementById('ayat-content').style.display = 'block';
+}
+
+function showHadith(d) {
+  document.getElementById('hadithArabic').textContent = d.arabic;
+  document.getElementById('hadithTranslit').textContent = d.translit || '';
+  document.getElementById('hadithTranslation').textContent = d.translation;
+  document.getElementById('hadithNarrator').textContent = d.narrator || '';
+  document.getElementById('hadithRef').textContent = d.ref;
+  document.getElementById('hadith-loading').style.display = 'none';
+  document.getElementById('hadith-content').style.display = 'block';
+}
+
+function init() {
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const ayat = DAILY_AYAT[dayOfYear % DAILY_AYAT.length];
+  const hadith = DAILY_HADITH[dayOfYear % DAILY_HADITH.length];
+  showAyat(ayat);
+  showHadith(hadith);
+
+  // API থেকে আরও ভালো data আনার চেষ্টা
+  fetch('/api/daily-content').then(r => r.ok ? r.json() : null).then(data => {
+    if (!data) return;
+    if (data.ayat) showAyat({ arabic: data.ayat.arabic, translit: '', translation: data.ayat.bangla, ref: data.ayat.reference });
+    if (data.hadith) showHadith({ arabic: data.hadith.text_arabic || '', translit: '', translation: data.hadith.text_english, ref: data.hadith.reference, narrator: data.hadith.narrator || '' });
+  }).catch(() => {});
+
+  buildSurahSelect();
+  renderSurah();
+  renderPlan();
+  loadArabicPlan();
+}
+
+// ══════════════════════════════════════════════
+// SURAH RENDER
+// ══════════════════════════════════════════════
+function renderSurah() {
+  const s = SURAH_DATA[currentSurahIndex];
+  document.getElementById('surahNameAr').textContent = s.nameAr;
+  document.getElementById('surahNameBn').textContent = s.nameBn;
+  document.getElementById('surahMeta').innerHTML = `
+    <span class="meta-chip green">${s.type}</span>
+    <span class="meta-chip gold">${s.ayatCount}</span>
+    <span class="meta-chip green">${s.number}</span>
+  `;
+  const container = document.getElementById('versesContainer');
+  container.innerHTML = s.verses.map(v => `
+    <div class="verse-block">
+      <div class="verse-number-bar">
+        <div class="verse-num">${v.num}</div>
+        <small style="color:var(--ink-muted);font-size:0.75rem;">আয়াত ${v.num}</small>
+      </div>
+      <div class="verse-full-arabic">${v.arabic}</div>
+      <div class="words-grid">
+        ${v.words.map(w => `
+          <div class="word-card">
+            <div class="word-arabic">${w.ar}</div>
+            <div class="word-transliteration">${w.tr}</div>
+            <div class="word-meaning">${w.bn}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="verse-translation-full">📝 <strong>অনুবাদ:</strong> ${v.translation}</div>
+    </div>
+  `).join('');
+}
+
+function changeSurah(dir) {
+  currentSurahIndex = (currentSurahIndex + dir + SURAH_DATA.length) % SURAH_DATA.length;
+  renderSurah();
+  document.getElementById('surahInfographicOutput').className = 'infographic-output';
+}
+
+// ══════════════════════════════════════════════
+// 30-DAY PLAN
+// ══════════════════════════════════════════════
+function renderPlan() {
+  updateProgress();
+}
+
+function toggleDay(day) {
+  if (completedDays.includes(day)) {
+    completedDays = completedDays.filter(d => d !== day);
+  } else {
+    completedDays.push(day);
+    showToast(`দিন ${day} সম্পন্ন! 🎉 মাশাআল্লাহ`);
+  }
+  localStorage.setItem('completedDays', JSON.stringify(completedDays));
+  renderPlan();
+}
+
+function updateProgress() {
+  const count = completedDays.length;
+  const pct = Math.round((count / 30) * 100);
+  document.getElementById('completedCount').textContent = `${count}/৩০`;
+  document.getElementById('progressPercent').textContent = `${pct}%`;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+// ══════════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════════
+function setSearchType(type, btn) {
+  searchType = type;
+  document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function doSearch() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const resultsEl = document.getElementById('searchResults');
+  if (!q) { resultsEl.style.display = 'none'; return; }
+
+  const data = SEARCH_DATA[searchType];
+  const results = data.filter(item =>
+    item.title.toLowerCase().includes(q) ||
+    item.translation.toLowerCase().includes(q) ||
+    item.tags.some(t => t.toLowerCase().includes(q))
+  );
+
+  if (results.length === 0) {
+    resultsEl.style.display = 'block';
+    resultsEl.innerHTML = `<div style="background:rgba(255,255,255,0.9);border-radius:12px;padding:14px 18px;color:#666;font-size:0.85rem;">কোনো ফলাফল পাওয়া যায়নি। অন্য কীওয়ার্ড দিয়ে চেষ্টা করুন।</div>`;
+    return;
+  }
+
+  resultsEl.style.display = 'block';
+  resultsEl.innerHTML = results.map((r, i) => `
+    <div class="search-result-item" onclick="toggleResult(this)">
+      <div class="result-header">
+        <div class="result-title">${r.title}</div>
+        <span class="result-ref">${r.ref}</span>
+      </div>
+      <div class="result-expand">
+        <div class="result-expand-inner">
+          <div style="font-family:'Noto Naskh Arabic',serif;font-size:1.4rem;direction:rtl;text-align:right;color:var(--emerald-light);margin-bottom:6px;line-height:2">${r.arabic}</div>
+          <div style="font-size:0.78rem;font-style:italic;color:var(--gold-light);margin-bottom:8px">${r.translit||''}</div>
+          <div style="font-size:0.88rem;color:var(--ink-soft);line-height:1.7;background:rgba(245,158,11,0.07);padding:10px 14px;border-radius:8px;border-left:3px solid var(--gold)">${r.translation}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleResult(el) {
+  const exp = el.querySelector('.result-expand');
+  exp.classList.toggle('open');
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch();
+});
+
+// ══════════════════════════════════════════════
+// INFOGRAPHICS (NanoBanana via Netlify function)
+// ══════════════════════════════════════════════
+async function generateSurahInfographic() {
+  const s = SURAH_DATA[currentSurahIndex];
+  const output = document.getElementById('surahInfographicOutput');
+  const loading = document.getElementById('infographicLoading');
+  const svgWrap = document.getElementById('infographicSvgWrap');
+  const dlBtn = document.getElementById('downloadInfographicBtn');
+  output.style.display = 'block';
+  loading.style.display = 'flex';
+  svgWrap.innerHTML = '';
+  dlBtn.style.display = 'none';
+  try {
+    const res = await fetch('/api/infographic', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ surah_name: s.nameAr, surah_number: s.number.replace('সূরা নং: ', ''), total_ayahs: s.ayatCount })
+    });
+    const data = await res.json();
+    loading.style.display = 'none';
+    if (data.svg) {
+      lastInfographicSvg = data.svg;
+      svgWrap.innerHTML = data.svg;
+      dlBtn.style.display = 'inline-block';
+    } else {
+      svgWrap.innerHTML = '<div style="padding:16px;color:#f87171">❌ ' + (data.error || 'তৈরি হয়নি') + '</div>';
+    }
+  } catch(e) {
+    loading.style.display = 'none';
+    svgWrap.innerHTML = '<div style="padding:16px;color:#f87171">❌ ' + e.message + '</div>';
+  }
+}
+
+function downloadInfographic() {
+  if (!lastInfographicSvg) return;
+  const blob = new Blob([lastInfographicSvg], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'surah-infographic.svg'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function generateCustomInfographic() {
+  const text = document.getElementById('customInfographicInput').value.trim();
+  if (!text) { showToast('অনুগ্রহ করে একটি বিষয় লিখুন'); return; }
+  const output = document.getElementById('customInfographicOutput');
+  output.className = 'custom-infographic-output visible';
+  output.innerHTML = '<div class="infographic-loading"><div class="spinner"></div><span>Gemini AI দিয়ে তৈরি হচ্ছে...</span></div>';
+  try {
+    const res = await fetch('/api/infographic', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ surah_name: text, surah_number: '', total_ayahs: '' })
+    });
+    const data = await res.json();
+    if (data.svg) {
+      output.innerHTML = data.svg + '<button onclick="(function(){const b=new Blob(['' + '${data.svg}' + ''],{type:'image/svg+xml'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='infographic.svg';a.click();})()" style="display:block;margin-top:12px;padding:10px 22px;background:var(--gold);color:#0f172a;border:none;border-radius:50px;cursor:pointer;font-family:inherit;font-weight:700">⬇ ডাউনলোড</button>';
+      const svgBlob = data.svg;
+      output.querySelector('button').onclick = function() {
+        const b = new Blob([svgBlob], {type:'image/svg+xml'});
+        const u = URL.createObjectURL(b);
+        const a = document.createElement('a');
+        a.href = u; a.download = 'infographic.svg'; a.click();
+      };
+    } else {
+      output.innerHTML = '<div style="padding:16px;background:rgba(245,158,11,0.1);border-radius:10px;color:var(--gold-light)">' + (data.error || 'তৈরি হয়নি') + '</div>';
+    }
+  } catch(e) {
+    output.innerHTML = '<div style="padding:16px;color:#f87171">❌ ' + e.message + '</div>';
+  }
+}
+
+// ══════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ══════════════════════════════════════════════
+// START
+// ══════════════════════════════════════════════
+init();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
