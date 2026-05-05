@@ -37,9 +37,14 @@ SVG rules:
 - শুধু SVG code দাও, কোনো explanation নয়, \`\`\` ও নয়
 `;
 
-    // Gemini Flash — fast ও free tier আছে
+    // API key check
+    if (!process.env.GEMINI_API_KEY) {
+      throw new Error("GEMINI_API_KEY environment variable set করা নেই");
+    }
+
+    // Gemini 2.0 Flash — latest free model
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,7 +59,14 @@ SVG rules:
     );
 
     if (!geminiRes.ok) {
-      throw new Error(`Gemini API error: ${geminiRes.status}`);
+      const errText = await geminiRes.text();
+      if (geminiRes.status === 403) {
+        throw new Error("Access Denied (403) — Google Cloud Console এ 'Generative Language API' enable করো: https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com");
+      }
+      if (geminiRes.status === 400) {
+        throw new Error("Bad Request (400) — API key সঠিক নয় বা model নাম ভুল");
+      }
+      throw new Error("Gemini API error " + geminiRes.status + ": " + errText.slice(0, 300));
     }
 
     const geminiData = await geminiRes.json();
