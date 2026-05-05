@@ -1,0 +1,229 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .wrap { padding: 1rem 0 2rem; }
+  .hero { text-align: center; padding: 2rem 1rem 1.5rem; }
+  .hero-title { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 8px; }
+  .hero-sub { font-size: 14px; color: var(--color-text-secondary); }
+  .phase-tabs { display: flex; gap: 6px; padding: 0 0 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); font-size: 13px; cursor: pointer; color: var(--color-text-secondary); background: transparent; transition: all 0.15s; }
+  .tab.active { background: #1D9E75; color: #fff; border-color: #1D9E75; font-weight: 500; }
+  .phase-block { display: none; }
+  .phase-block.active { display: block; }
+  .phase-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); margin-bottom: 1rem; }
+  .phase-icon { font-size: 24px; width: 24px; height: 24px; }
+  .phase-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+  .phase-desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+  .days-grid { display: grid; gap: 10px; }
+  .day-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  .day-header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; user-select: none; }
+  .day-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+  .day-num.p1 { background: #E1F5EE; color: #0F6E56; }
+  .day-num.p2 { background: #E6F1FB; color: #185FA5; }
+  .day-num.p3 { background: #FAEEDA; color: #854F0B; }
+  .day-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+  .day-arabic { font-size: 18px; color: var(--color-text-secondary); direction: rtl; }
+  .chevron { font-size: 12px; color: var(--color-text-secondary); transition: transform 0.2s; }
+  .day-card.open .chevron { transform: rotate(180deg); }
+  .day-body { display: none; padding: 0 14px 14px; border-top: 0.5px solid var(--color-border-tertiary); }
+  .day-card.open .day-body { display: block; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin: 12px 0 6px; }
+  .task-list { list-style: none; }
+  .task-list li { font-size: 13px; color: var(--color-text-primary); padding: 4px 0; padding-left: 16px; position: relative; line-height: 1.5; }
+  .task-list li::before { content: '—'; position: absolute; left: 0; color: var(--color-text-secondary); }
+  .resources { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .res-tag { font-size: 12px; padding: 4px 10px; border-radius: 12px; border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); }
+  .res-tag a { color: inherit; text-decoration: none; }
+  .res-tag:hover { background: var(--color-background-secondary); }
+  .arabic-sample { font-size: 20px; direction: rtl; color: #1D9E75; padding: 8px 12px; background: #E1F5EE; border-radius: 8px; display: inline-block; margin-top: 8px; }
+  .tip-box { background: var(--color-background-secondary); border-left: 2px solid #1D9E75; padding: 8px 12px; border-radius: 0 8px 8px 0; margin-top: 10px; font-size: 13px; color: var(--color-text-secondary); }
+  .resources-section { margin-top: 2rem; }
+  .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 10px; }
+  .res-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px; }
+  .res-card-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .res-card-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .res-card-link { font-size: 12px; color: #1D9E75; margin-top: 6px; display: block; }
+  .progress-bar { display: flex; gap: 3px; padding: 1rem 0; }
+  .prog-day { height: 6px; flex: 1; border-radius: 3px; background: var(--color-border-tertiary); }
+  .prog-day.p1 { background: #1D9E75; }
+  .prog-day.p2 { background: #378ADD; }
+  .prog-day.p3 { background: #EF9F27; }
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only">৩০ দিনের আরবি শেখার পরিকল্পনা</h2>
+  <div class="hero">
+    <div class="hero-title">৩০ দিনে আরবি শেখার পরিকল্পনা</div>
+    <div class="hero-sub">কথা বলা + কোরআন বোঝা — ধাপে ধাপে সম্পূর্ণ গাইড</div>
+    <div class="progress-bar" id="prog"></div>
+  </div>
+
+  <div class="phase-tabs">
+    <button class="tab active" onclick="showPhase(0)">সপ্তাহ ১ — ভিত্তি</button>
+    <button class="tab" onclick="showPhase(1)">সপ্তাহ ২ — কথা বলা</button>
+    <button class="tab" onclick="showPhase(2)">সপ্তাহ ৩–৪ — কোরআন</button>
+    <button class="tab" onclick="showPhase(3)">রিসোর্স গাইড</button>
+  </div>
+
+  <div id="phase0" class="phase-block active">
+    <div class="phase-header">
+      <div class="phase-icon">📖</div>
+      <div>
+        <div class="phase-title">সপ্তাহ ১ — ভিত্তি তৈরি (দিন ১–১০)</div>
+        <div class="phase-desc">হরফ, উচ্চারণ ও মৌলিক শব্দ</div>
+      </div>
+    </div>
+    <div class="days-grid" id="days0"></div>
+  </div>
+
+  <div id="phase1" class="phase-block">
+    <div class="phase-header">
+      <div class="phase-icon">💬</div>
+      <div>
+        <div class="phase-title">সপ্তাহ ২ — কথোপকথন (দিন ১১–২০)</div>
+        <div class="phase-desc">দৈনন্দিন কথা বলা ও বাক্য গঠন</div>
+      </div>
+    </div>
+    <div class="days-grid" id="days1"></div>
+  </div>
+
+  <div id="phase2" class="phase-block">
+    <div class="phase-header">
+      <div class="phase-icon">🕌</div>
+      <div>
+        <div class="phase-title">সপ্তাহ ৩–৪ — কোরআন (দিন ২১–৩০)</div>
+        <div class="phase-desc">কোরআনের ভাষা ও অর্থ বোঝা</div>
+      </div>
+    </div>
+    <div class="days-grid" id="days2"></div>
+  </div>
+
+  <div id="phase3" class="phase-block">
+    <div class="resources-section">
+      <div class="phase-header">
+        <div class="phase-icon">🔗</div>
+        <div>
+          <div class="phase-title">সেরা রিসোর্স ও অ্যাপ</div>
+          <div class="phase-desc">কোথায় শিখবেন, কোথায় প্র্যাকটিস করবেন</div>
+        </div>
+      </div>
+      <div class="res-grid" id="resGrid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const phase1Days = [
+  { day: 1, title: "আরবি হরফ পরিচয় (১ম অংশ)", arabic: "أ ب ت ث", tasks: ["আলিফ থেকে যাল — প্রথম ১৪টি হরফ শিখুন", "প্রতিটি হরফ ৫ বার লিখুন", "Madinah Book ১ পড়া শুরু করুন"], resources: ["Madinah Arabic Book 1", "YouTube: Arabic101"], tip: "প্রতিটি হরফের ৪টি রূপ আছে — শুরু, মাঝ, শেষ ও আলাদা।" },
+  { day: 2, title: "আরবি হরফ (২য় অংশ)", arabic: "ج ح خ د", tasks: ["বাকি ১৪টি হরফ শিখুন", "হারকাত শিখুন — ফাতহা, কাসরা, দাম্মা", "হরফ লেখা অনুশীলন করুন"], resources: ["Bayyinah TV", "Arabic Pad App"], tip: "হারকাত (শর্ট ভাওয়েল) উচ্চারণের চাবিকাঠি।" },
+  { day: 3, title: "শব্দ উচ্চারণ ও মখরাজ", arabic: "ع غ خ ح", tasks: ["গলার হরফ: ع ح غ খ অনুশীলন করুন", "মিরর দেখে মুখের অবস্থান ঠিক করুন", "৫টি সহজ শব্দ মুখস্থ করুন"], resources: ["YouTube: Tarteel", "Forvo.com"], tip: "ع এবং ح এর পার্থক্য বোঝা খুব জরুরি।" },
+  { day: 4, title: "সংখ্যা ও রং", arabic: "واحد، اثنان", tasks: ["১–১০ পর্যন্ত আরবি সংখ্যা শিখুন", "৫টি রঙের নাম শিখুন", "Anki ডেক তৈরি শুরু করুন"], resources: ["Anki App", "Quizlet Arabic"], tip: "প্রতিদিন নতুন কার্ড যোগ করুন, পুরনোটা রিভিউ করুন।" },
+  { day: 5, title: "পরিবার ও মানুষ", arabic: "أب، أم، أخ", tasks: ["পরিবারের সদস্যদের নাম শিখুন", "ব্যক্তিগত সর্বনাম শিখুন: أنا، أنتَ، هو", "সহজ বাক্য বলুন: هذا أبي (এটা আমার বাবা)"], resources: ["Madinah Book 1 Ch.1-3", "Anki"], tip: "সর্বনাম মুখস্থ করা আবশ্যক — সব বাক্যে লাগে।" },
+  { day: 6, title: "রিভিউ দিন ১", arabic: "مراجعة", tasks: ["দিন ১–৫ এর সব শব্দ রিভিউ করুন", "Anki কার্ড প্র্যাকটিস করুন", "হরফ লেখার টেস্ট নিন নিজে নিজে"], resources: ["Anki", "HelloTalk App"], tip: "রিভিউ না করলে ৮০% ভুলে যাবেন ২৪ ঘণ্টায়!" },
+  { day: 7, title: "ঘর ও জিনিসপত্র", arabic: "بيت، كتاب، قلم", tasks: ["ঘরের জিনিসের নাম শিখুন ১০টি", "এটা কী? ما هذا؟ শিখুন", "ঘরে বসে প্রতিটি জিনিস আরবিতে বলুন"], resources: ["Duolingo Arabic", "Pimsleur Arabic"], tip: "চারপাশের জিনিসে আরবি স্টিকার লাগান!" },
+  { day: 8, title: "ক্রিয়াপদ পরিচয়", arabic: "ذهب، أكل، قرأ", tasks: ["৩টি মূল ক্রিয়া শিখুন: গেল, খেল, পড়ল", "Past tense (ماضي) বুঝুন", "৫টি বাক্য তৈরি করুন"], resources: ["Madinah Book 1 Ch.4", "Arabic Verbs App"], tip: "আরবি ক্রিয়া ৩ অক্ষরের 'root' থেকে আসে।" },
+  { day: 9, title: "দিন ও সময়", arabic: "الأحد، الإثنين", tasks: ["সপ্তাহের দিনগুলো শিখুন", "সকাল, বিকাল, রাত ইত্যাদি শিখুন", "كم الساعة؟ (কটা বাজে?) বলতে শিখুন"], resources: ["Italki — টিউটর বুক করুন", "Anki"], tip: "প্রতিদিন সকালে আরবিতে দিনটা বলুন।" },
+  { day: 10, title: "প্রথম ১০ দিন রিভিউ", arabic: "امتحان", tasks: ["সব শব্দ ও বাক্য রিভিউ করুন", "নিজেকে রেকর্ড করুন — ৫ মিনিট আরবিতে বলুন", "Anki তে পুরনো কার্ড সব দেখুন"], resources: ["Anki", "Italki"], tip: "নিজের ভয়েস শুনলে উচ্চারণ দ্রুত ঠিক হয়।" },
+];
+const phase2Days = [
+  { day: 11, title: "সালাম ও পরিচয়", arabic: "السلام عليكم", tasks: ["পরিচয় দেওয়া শিখুন: اسمي... (আমার নাম...)", "দেশ ও শহরের নাম আরবিতে বলুন", "Italki বা HelloTalk এ কাউকে সালাম দিন"], resources: ["HelloTalk", "Italki"], tip: "প্রথম native speaker এর সাথে কথা বলা সবচেয়ে গুরুত্বপূর্ণ।" },
+  { day: 12, title: "প্রশ্ন করতে শিখুন", arabic: "من؟ ما؟ أين؟", tasks: ["৬টি প্রশ্নবোধক শব্দ শিখুন: কে, কী, কোথায়, কখন, কেন, কীভাবে", "প্রতিটি দিয়ে ২টি বাক্য বানান", "নেটিভের সাথে Q&A প্র্যাকটিস করুন"], resources: ["HelloTalk", "Tandem App"], tip: "প্রশ্ন করতে পারলে যেকোনো কথা চালিয়ে নেওয়া যায়।" },
+  { day: 13, title: "বাজার ও কেনাকাটা", arabic: "بكم هذا؟", tasks: ["দাম জিজ্ঞেস করতে শিখুন", "خضروات (সবজি) ও فواكه (ফল) এর নাম", "রোলপ্লে: দোকানি ও ক্রেতা"], resources: ["YouTube: Arabic with Sam", "Anki"], tip: "বাস্তব পরিস্থিতির রোলপ্লে দ্রুত শেখায়।" },
+  { day: 14, title: "Present tense শিখুন", arabic: "يكتب، يقرأ", tasks: ["Present tense (مضارع) শিখুন", "আমি, তুমি, সে — তিনটি ফর্ম অনুশীলন করুন", "১০টি বাক্য লিখুন daily routine নিয়ে"], resources: ["Madinah Book 1 Ch.8-10", "Arabic Grammar App"], tip: "প্রতিদিনের রুটিন আরবিতে বলার চেষ্টা করুন।" },
+  { day: 15, title: "রিভিউ + Italki সেশন", arabic: "مراجعة", tasks: ["Italki এ ৩০ মিনিটের সেশন বুক করুন", "সপ্তাহের সব শব্দ রিভিউ করুন", "নিজের ৩ মিনিটের পরিচয় রেকর্ড করুন"], resources: ["Italki", "Pimsleur Arabic"], tip: "সপ্তাহে অন্তত ১টি টিউটর সেশন রাখুন।" },
+  { day: 16, title: "স্বাস্থ্য ও শরীর", arabic: "رأس، يد، قلب", tasks: ["শরীরের অঙ্গের নাম শিখুন", "أنا مريض (আমি অসুস্থ) ধরনের বাক্য", "ডাক্তারের সাথে কথোপকথন রোলপ্লে"], resources: ["Anki", "Duolingo"], tip: "জরুরি পরিস্থিতির শব্দ আগে শিখুন।" },
+  { day: 17, title: "ভ্রমণ ও দিকনির্দেশনা", arabic: "يمين، يسار، أمام", tasks: ["ডানে, বামে, সামনে, পিছনে শিখুন", "হোটেল ও বিমানবন্দরের শব্দ", "Google Maps এ আরবি ব্যবহার করুন"], resources: ["Pimsleur Arabic", "Google Maps Arabic"], tip: "আরবি দেশে গেলে সরাসরি কাজে লাগবে।" },
+  { day: 18, title: "অনুভূতি প্রকাশ", arabic: "أنا سعيد، حزين", tasks: ["আবেগ প্রকাশের শব্দ শিখুন: খুশি, দুঃখী, ক্লান্ত", "كيف حالك؟ এর উত্তর দিতে শিখুন", "HelloTalk এ চ্যাট করুন"], resources: ["HelloTalk", "Anki"], tip: "আবেগের ভাষা সম্পর্ক গড়তে সাহায্য করে।" },
+  { day: 19, title: "Future tense ও স্বপ্ন", arabic: "سأذهب، سأتعلم", tasks: ["Future tense: سـ + মুদারি শিখুন", "নিজের লক্ষ্য আরবিতে বলুন", "৫ মিনিটের monologue রেকর্ড করুন"], resources: ["Madinah Book 2", "Italki"], tip: "আরবিতে চিন্তা করার অভ্যাস তৈরি করুন।" },
+  { day: 20, title: "বড় রিভিউ + স্পিকিং টেস্ট", arabic: "اختبار الكلام", tasks: ["Italki তে ৪৫ মিনিটের ফ্রি-টক করুন", "এখন পর্যন্ত শেখা সব গ্রামার রিভিউ", "কমজোরি চিহ্নিত করুন"], resources: ["Italki", "Tandem"], tip: "ভুল করতে ভয় পাবেন না — এটাই শেখার পথ।" },
+];
+const phase3Days = [
+  { day: 21, title: "কোরআনের ভাষা পরিচয়", arabic: "بِسْمِ اللَّهِ", tasks: ["Classical vs Modern Arabic পার্থক্য বুঝুন", "বিসমিল্লাহর প্রতিটি শব্দের অর্থ শিখুন", "Bayyinah TV: Quran vocabulary শুরু করুন"], resources: ["Bayyinah TV", "Quranwbw.com"], tip: "কোরআনের ৫০০ শব্দ জানলে ৭৫% আয়াত বোঝা যায়।" },
+  { day: 22, title: "সূরা ফাতিহার গভীর বিশ্লেষণ", arabic: "الْفَاتِحَة", tasks: ["ফাতিহার প্রতিটি শব্দ আলাদা করুন", "Root word খুঁজুন প্রতিটি শব্দের", "Quranwbw.com এ word by word পড়ুন"], resources: ["Quranwbw.com", "Quran.com"], tip: "ফাতিহা সব নামাজে পড়া হয় — এটি মুখস্থ অর্থ জানা জরুরি।" },
+  { day: 23, title: "কোরআনের ১০০ সাধারণ শব্দ", arabic: "رب، عبد، نور", tasks: ["Top ১০০ কোরআনিক শব্দ Anki তে যোগ করুন", "প্রতিদিন ২০টি করে মুখস্থ করুন", "শব্দগুলো কোন আয়াতে আছে খুঁজুন"], resources: ["Quranwbw.com", "Anki — Quran vocab deck"], tip: "quranwbw.com এ যেকোনো শব্দে ক্লিক করলে অর্থ পাবেন।" },
+  { day: 24, title: "Root word সিস্টেম", arabic: "ك-ت-ب → كتاب، كاتب", tasks: ["Root word কীভাবে কাজ করে বুঝুন", "৫টি Root এর পরিবার শিখুন", "Hans Wehr Dictionary ব্যবহার শিখুন"], resources: ["Hans Wehr Online", "Quranwbw"], tip: "১ টি root জানলে ১০–২০টি নতুন শব্দ পাবেন।" },
+  { day: 25, title: "ছোট সূরা অনুবাদ", arabic: "سورة الإخلاص", tasks: ["সূরা ইখলাস word by word বিশ্লেষণ করুন", "সূরা কাউসার বিশ্লেষণ করুন", "প্রতিটি শব্দ Anki তে যোগ করুন"], resources: ["Quranwbw.com", "Corpus.quran.com"], tip: "corpus.quran.com এ গ্রামার বিশ্লেষণ পাবেন।" },
+  { day: 26, title: "নামাজের আরবি", arabic: "الله أكبر، سبحان", tasks: ["নামাজের প্রতিটি দোয়ার অর্থ শিখুন", "রুকু ও সেজদার তাসবিহ বিশ্লেষণ", "নামাজ পড়তে পড়তে মনে মনে অর্থ বলুন"], resources: ["Islamway.net", "Sunnah.com"], tip: "অর্থ জেনে নামাজ পড়লে একাগ্রতা অনেক বাড়ে।" },
+  { day: 27, title: "দোয়া ও যিকির", arabic: "سبحان الله، الحمد لله", tasks: ["দৈনন্দিন মাসনুন দোয়াগুলো word by word শিখুন", "সুবহানাল্লাহ, আলহামদুলিল্লাহ এর বিশ্লেষণ", "Hisnul Muslim অ্যাপ ব্যবহার করুন"], resources: ["Hisnul Muslim App", "Sunnah.com"], tip: "যিকির করার সময় অর্থ মাথায় রাখুন।" },
+  { day: 28, title: "কোরআনে পুনরাবৃত্ত প্যাটার্ন", arabic: "إن الله، قل هو", tasks: ["কোরআনে সবচেয়ে বেশি আসা বাক্যাংশ চিহ্নিত করুন", "ইন্না, হুয়া, ওয়া ধরনের সংযোগকারী শব্দ", "যেকোনো সূরা পড়ুন এবং চেনা শব্দ চিহ্নিত করুন"], resources: ["Quran.com", "Quranwbw.com"], tip: "পুনরাবৃত্ত শব্দ আগে চিনলে বোঝার গতি বাড়ে।" },
+  { day: 29, title: "সমন্বয় দিন", arabic: "تكامل", tasks: ["কথোপকথন + কোরআন মিলিয়ে প্র্যাকটিস", "আরবিভাষী কারো সাথে ধর্মীয় বিষয়ে কথা বলুন", "পছন্দের সূরা সম্পূর্ণ বিশ্লেষণ করুন"], resources: ["Italki", "HelloTalk"], tip: "আরবি ভাষা ও ইসলাম — দুটো একসাথে চললে শেখা দ্রুত হয়।" },
+  { day: 30, title: "চূড়ান্ত রিভিউ ও পরবর্তী লক্ষ্য", arabic: "ما بعد ذلك؟", tasks: ["৩০ দিনের সব শব্দ ও গ্রামার রিভিউ", "নিজের ১০ মিনিটের ভিডিও রেকর্ড করুন", "পরবর্তী ৩০ দিনের পরিকল্পনা তৈরি করুন"], resources: ["Madinah Book 2", "Bayyinah TV Advanced"], tip: "অভিনন্দন! এটা শুরু — এখন নিয়মিত থাকুন।" },
+];
+const resources = [
+  { title: "Madinah Arabic Book", desc: "সবচেয়ে জনপ্রিয় আরবি কোর্স বই। Beginner থেকে শুরু। PDF বিনামূল্যে।", link: "https://www.lqtoronto.com/downloads.html", tag: "বই" },
+  { title: "Bayyinah TV", desc: "Nouman Ali Khan এর আরবি ও কোরআন কোর্স। বাংলাদেশ থেকে অ্যাক্সেস করা যায়।", link: "https://www.bayyinahtv.com", tag: "ভিডিও" },
+  { title: "Quranwbw.com", desc: "Word by word কোরআন অনুবাদ। প্রতিটি শব্দে ক্লিক করলে বাংলা অর্থ পাবেন।", link: "https://www.quranwbw.com", tag: "কোরআন" },
+  { title: "Italki", desc: "আরবিভাষী টিউটরের সাথে সরাসরি কথা বলুন। ঘণ্টায় $৫–১৫।", link: "https://www.italki.com", tag: "স্পিকিং" },
+  { title: "HelloTalk App", desc: "আরবি native speaker এর সাথে ভাষা বিনিময়। বিনামূল্যে।", link: "https://www.hellotalk.com", tag: "অ্যাপ" },
+  { title: "Anki", desc: "Flashcard অ্যাপ। Spaced repetition দিয়ে দ্রুত মুখস্থ করুন। বিনামূল্যে।", link: "https://apps.ankiweb.net", tag: "অ্যাপ" },
+  { title: "Corpus.quran.com", desc: "কোরআনের গ্রামার বিশ্লেষণ। প্রতিটি শব্দের parts of speech।", link: "https://corpus.quran.com", tag: "কোরআন" },
+  { title: "Pimsleur Arabic", desc: "অডিও-বেজড আরবি শেখা। গাড়িতে বা হাঁটতে হাঁটতে শিখুন।", link: "https://www.pimsleur.com/arabic", tag: "অডিও" },
+];
+
+function buildDays(arr, container, cls) {
+  arr.forEach((d, i) => {
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    card.innerHTML = `
+      <div class="day-header" onclick="toggleDay(this)">
+        <div class="day-num ${cls}">د${d.day}</div>
+        <div style="flex:1">
+          <div class="day-title">${d.title}</div>
+        </div>
+        <div class="day-arabic">${d.arabic}</div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="day-body">
+        <div class="section-label">আজকের কাজ</div>
+        <ul class="task-list">${d.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
+        <div class="section-label">রিসোর্স</div>
+        <div class="resources">${d.resources.map(r => `<span class="res-tag">${r}</span>`).join('')}</div>
+        <div class="tip-box">💡 ${d.tip}</div>
+      </div>
+    `;
+    document.getElementById(container).appendChild(card);
+  });
+}
+
+function buildResources() {
+  const g = document.getElementById('resGrid');
+  resources.forEach(r => {
+    const c = document.createElement('div');
+    c.className = 'res-card';
+    c.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <div class="res-card-title">${r.title}</div>
+        <span style="font-size:11px;padding:2px 7px;border-radius:10px;background:var(--color-background-secondary);color:var(--color-text-secondary);white-space:nowrap">${r.tag}</span>
+      </div>
+      <div class="res-card-desc">${r.desc}</div>
+      <a class="res-card-link" href="${r.link}" target="_blank">খুলুন →</a>
+    `;
+    g.appendChild(c);
+  });
+}
+
+function buildProgress() {
+  const p = document.getElementById('prog');
+  for (let i = 0; i < 30; i++) {
+    const d = document.createElement('div');
+    d.className = 'prog-day ' + (i < 10 ? 'p1' : i < 20 ? 'p2' : 'p3');
+    p.appendChild(d);
+  }
+}
+
+function toggleDay(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function showPhase(n) {
+  document.querySelectorAll('.phase-block').forEach((b, i) => b.classList.toggle('active', i === n));
+  document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === n));
+}
+
+buildDays(phase1Days, 'days0', 'p1');
+buildDays(phase2Days, 'days1', 'p2');
+buildDays(phase3Days, 'days2', 'p3');
+buildResources();
+buildProgress();
+</script>
