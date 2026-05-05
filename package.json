@@ -1,0 +1,11 @@
+{
+  "name": "al-noor-islamic-website",
+  "version": "1.0.0",
+  "description": "আল-নূর ইসলামিক লার্নিং হাব",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
